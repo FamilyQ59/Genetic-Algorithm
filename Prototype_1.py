@@ -32,6 +32,7 @@ class Environment:
 
         # Children
         self.children_population = []
+        self.Fitness = 0
 
     def draw(self):
         self.screen.fill((0, 0, 0))
@@ -60,6 +61,12 @@ class Environment:
                 seeker.movement()
                 seeker.fitness = seeker.Grade_Fitness()
 
+            print(" ")
+            print("Population Size" + " " + str(len(self.population)))
+            print("Genes List Size" + " " + str(len(self.population[5].genes)))
+            print("Fitness" + " " + str(self.Fitness))
+            print(" ")
+
             global frame_counter
             frame_counter += 1
 
@@ -70,8 +77,7 @@ class Environment:
                 # Sort according to fitness
                 self.population = sorted(self.population, key=lambda x: x.fitness)
 
-                Fitness = [self.population[i].fitness for i in range(len(self.population))]
-                print(Fitness)
+                self.Fitness = [self.population[i].fitness for i in range(len(self.population))]
 
                 # Elitism
                 # Get the index for top 10% of population, and pass it down directly
@@ -134,6 +140,8 @@ class Seeker:
         pygame.draw.rect(surface, (255, 0, 0), self.hitbox)
         
     def Mating(self, MatePartnerGenes):
+        self.child_genes = []
+
         for gene1, gene2 in zip(self.genes, MatePartnerGenes.genes):
             if self.probability < 0.45:
                 self.child_genes.append(gene1)
@@ -152,6 +160,9 @@ class Seeker:
     def Grade_Fitness(self):
         Fitness = math.sqrt((self.position.x - TREAT.position.x)**2 +
                             (self.position.y - TREAT.position.y)**2)
+
+        if  600 < self.position.x < 0 or 600 < self.position.y < 0:
+            Fitness -= 100
 
         return Fitness
 
