@@ -1,5 +1,4 @@
-# Python3 program to create target string, starting from
-# random string using Genetic Algorithm
+# OBTAINED FROM GEEKSFORGEEKS.ORG
 
 import random
 
@@ -111,7 +110,6 @@ def main():
         # and break the loop
         if population[0].fitness <= 0:
             found = True
-            break
 
         # Otherwise generate new offsprings for new generation
         new_generation = []

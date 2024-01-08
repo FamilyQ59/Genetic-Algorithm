@@ -1,4 +1,0 @@
-Prototype 1:
-    Create a simple window with a random positioned objective, "Treat". Create a population of "seekers" which will go
-    finding the way through genetic algorithm. The fitness score will be determined by the vector distance between each
-    seeker and the treat.
