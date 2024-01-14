@@ -61,12 +61,6 @@ class Environment:
                 seeker.movement()
                 seeker.fitness = seeker.Grade_Fitness()
 
-            print(" ")
-            print("Population Size" + " " + str(len(self.population)))
-            print("Genes List Size" + " " + str(len(self.population[5].genes)))
-            print("Fitness" + " " + str(self.Fitness))
-            print(" ")
-
             global frame_counter
             frame_counter += 1
 
